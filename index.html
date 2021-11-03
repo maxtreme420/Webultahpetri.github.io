@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
+  @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+  * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+  body {
+    background: #E5E5E5;
+    background-image: url("https://blog.offgamers.com/wp-content/uploads/2021/09/1-1.jpg");
+    padding: 50px;
+  }
+  
+  #card-front {
+    color: #FFDFDF;
+  }
+  
+  #card, #card-front, #card-inside {
+    height: 480px;
+  }
+  
+  .wrap {
+      padding: 1.5em 2.5em;
+      height: 100%;
+  }
+  #card-front, #card-inside {
+    width: 50%;
+    -webkit-box-shadow: 2px 2px 30px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 2px 2px 30px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .5);
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .5);
+    position: absolute;
+    left: 50%;
+  }
+  
+  
+  #card-inside .wrap {
+      background: #FFEFEF;
+      -webkit-box-shadow: inset 2px 0 1px rgba(0, 0, 0, .05);
+      -moz-box-shadow: inset 2px 0 1px rgba(0, 0, 0, .05);
+      box-shadow: inset 2px 0 1px rgba(0, 0, 0, .05);
+  }
+  #card {
+      max-width: 960px;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      perspective: 5000px;
+      -moz-perspective: 5000px;
+      -webkit-perspective: 5000px;
+      position: relative;
+  }
+  
+  #card h1 {
+      text-align: center;
+      font-family: 'Nobile', sans-serif;
+      font-style: italic;
+      font-size: 50px;
+      text-shadow: 
+          4px 4px 0px rgba(0, 0, 0, .15),
+          1px 1px 0 rgba(255, 200, 200, 255),
+          2px 2px 0 rgba(255, 150, 150, 255),
+          3px 3px 0 rgba(255, 125, 125, 255);
+      color: rgb(0, 0, 0);
+  }
+  #card-inside {
+      font-size: 1.1em;
+      line-height: 1.4;
+      font-family: 'Nobile';
+      color: #a17070;
+      font-style: italic;
+  }
+  
+  p {
+      margin-top: 1em;
+  }
+  
+  p:first-child {
+      margin-top: 0;
+  }
+  
+  p.signed {
+      margin-top: 1.5em;
+      text-align: center;
+      font-family: 'Dancing Script', sans-serif;
+      font-size: 1.5em;
+  }
+  
+  #card-front {
+      background-color: #f3f1f1;
+      background-image: linear-gradient(top, #ffffff 0%, #ffffff 100%);
+      background-image: -moz-linear-gradient(top, hsl(0, 0%, 100%) 0%, #ffffff 100%);
+      background-image: -webkit-linear-gradient(top, #ffffff 0%, #fcfcfc 100%);
+              transform-origin: left;
+         -moz-transform-origin: left;
+      -webkit-transform-origin: left;
+              transition:         transform 1s linear;
+         -moz-transition:    -moz-transform 1s linear;
+      -webkit-transition: -webkit-transform 1s linear;
+      position: relative;
+  }
+  
+  #card-front .wrap {
+              transition: background 1s linear;
+         -moz-transition: background 1s linear;
+      -webkit-transition: background 1s linear;
+  }
+  
+  #card-front button {
+    position: absolute;
+    bottom: 1em;
+    right: -12px;
+    background: rgb(145, 145, 145);
+    color: rgb(71, 28, 28);
+    font-family: 'Nobile', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: .5em;
+    border: none;
+    cursor: pointer;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .4);
+       -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .4);
+  }
+  
+  #card-front button:hover,
+  #card-front button:focus {
+    background: #F22;
+  }
+  
+  #close {
+    display: none;
+  }
+  
+  #card.open-fully #close,
+  #card-open-half #close {
+    display: inline;
+  }
+  
+  #card.open-fully #open {
+    display: none;
+  }
+  
+  
+  #card.open-half #card-front,
+  #card.close-half #card-front {
+              transform: rotateY(-90deg);
+         -moz-transform: rotateY(-90deg);
+      -webkit-transform: rotateY(-90deg);
+  }
+  #card.open-half #card-front .wrap {
+      background-color: rgba(0, 0, 0, .5);
+  }
+  
+  #card.open-fully #card-front,
+  #card.close-half #card-front {
+    background: #FFEFEF;
+  }
+  
+  #card.open-fully #card-front {
+      transform: rotateY(-180deg);
+      -moz-transform: rotateY(-180deg);
+      -webkit-transform: rotateY(-180deg);
+  }
+  
+  #card.open-fully #card-front .wrap {
+      background-color: rgba(0, 0, 0, 0);
+  }
+  
+  #card.open-fully #card-front .wrap *,
+  #card.close-half #card-front .wrap * {
+     display: none;
+  }
+  
+  footer {
+    max-width: 500px;
+    margin: 40px auto;
+    font-family: 'Nobile', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #888;
+    text-align: center;
+  }
+    </style>
+    </head>
+  <body>
+    <div id="card">
+      <div id="card-inside">
+        <div class="wrap">
+          <p>selamat anda tertypu!!</p>
+          <p>oh tentu tidak semudah itu sa lupa ultah abang, sa t punya hadiah apa-apa jadi sa buatkan websait abal abal sj, blum jago soalnya </p>
+          <p>nih bang sa masih ada hadiah lagi, tinggal click saja...</p>
+          <a href="https://bit.ly/3wdEBrH">ini ee</a>
+          
+          <center><h4>demikian surat ini, saya tidak mengucapkan apa apa.</h4></center>
+          <p class="signed">kawan kau</p>
+          
+        </div>
+      </div>
+      <div id="card-front">
+        <div class="wrap">
+          <h1>Congrats, you gained free 1 month nitro!</h1>
+          <h1>Click arrow here!</h1>
+        </div>
+        <button id="open">&gt;</button>
+        <button id="close">&lt;</button>
+      </div>
+    </div>
+    <script>
+      (function() {
+    function $(id) {
+      return document.getElementById(id);
+    }
+  
+    var card = $('card'),
+        openB = $('open'),
+        closeB = $('close'),
+        timer = null;
+    console.log('wat', card);
+    openB.addEventListener('click', function () {
+      card.setAttribute('class', 'open-half');
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(function () {
+        card.setAttribute('class', 'open-fully');
+        timer = null;
+      }, 1000);
+    });
+  
+    closeB.addEventListener('click', function () {
+      card.setAttribute('class', 'close-half');
+      if (timer) clearTimerout(timer);
+      timer = setTimeout(function () {
+        card.setAttribute('class', '');
+        timer = null;
+      }, 1000);
+    });
+  
+  }());
+  
+    </script>
+  
+  <div style="visibility: hidden;">
+  <embed src="bday.mp3" autostart="true" loop="true">
+  </div>
+  <div style="visibility: hidden;">
+  <embed src="bday.mp3" autostart="true" loop="true">
+  </div>
+  
+    <div style="text-align: right;position: fixed;z-index:9999999;bottom: 0;width: auto;right: 1%;cursor: pointer;line-height: 0;display:block !important;"><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png" alt="www.000webhost.com"></a></div><script>function getCookie(t){for(var e=t+"=",n=decodeURIComponent(document.cookie).split(";"),o=0;o<n.length;o++){for(var i=n[o];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(e))return i.substring(e.length,i.length)}return""}getCookie("hostinger")&&(document.cookie="hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;",location.reload());var wordpressAdminBody=document.getElementsByClassName("wp-admin")[0],notification=document.getElementsByClassName("notice notice-success is-dismissible"),hostingerLogo=document.getElementsByClassName("hlogo"),mainContent=document.getElementsByClassName("notice_content")[0];if(null!=wordpressAdminBody&&notification.length>0&&null!=mainContent){var googleFont=document.createElement("link");googleFontHref=document.createAttribute("href"),googleFontRel=document.createAttribute("rel"),googleFontHref.value="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700",googleFontRel.value="stylesheet",googleFont.setAttributeNode(googleFontHref),googleFont.setAttributeNode(googleFontRel);var css="@media only screen and (max-width: 576px) {#main_content {max-width: 320px !important;} #main_content h1 {font-size: 30px !important;} #main_content h2 {font-size: 40px !important; margin: 20px 0 !important;} #main_content p {font-size: 14px !important;} #main_content .content-wrapper {text-align: center !important;}} @media only screen and (max-width: 781px) {#main_content {margin: auto; justify-content: center; max-width: 445px;}} @media only screen and (max-width: 1325px) {.web-hosting-90-off-image-wrapper {position: absolute; max-width: 95% !important;} .notice_content {justify-content: center;} .web-hosting-90-off-image {opacity: 0.3;}} @media only screen and (min-width: 769px) {.notice_content {justify-content: space-between;} #main_content {margin-left: 5%; max-width: 445px;} .web-hosting-90-off-image-wrapper {position: absolute; display: flex; justify-content: center; width: 100%; }} .web-hosting-90-off-image {max-width: 90%;} .content-wrapper {min-height: 454px; display: flex; flex-direction: column; justify-content: center; z-index: 5} .notice_content {display: flex; align-items: center;} * {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .upgrade_button_red_sale{box-shadow: 0 2px 4px 0 rgba(255, 69, 70, 0.2); max-width: 350px; border: 0; border-radius: 3px; background-color: #ff4546 !important; padding: 15px 55px !important; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 600; color: #ffffff;} .upgrade_button_red_sale:hover{color: #ffffff !important; background: #d10303 !important;}",style=document.createElement("style"),sheet=window.document.styleSheets[0];style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName("head")[0].appendChild(style),document.getElementsByTagName("head")[0].appendChild(googleFont);var button=document.getElementsByClassName("upgrade_button_red")[0],link=button.parentElement;link.setAttribute("href","https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),link.innerHTML='<button class="upgrade_button_red_sale">Go for it</button>',(notification=notification[0]).setAttribute("style","padding-bottom: 0; padding-top: 5px; background-color: #040713; background-size: cover; background-repeat: no-repeat; color: #ffffff; border-left-color: #040713;"),notification.className="notice notice-error is-dismissible";var mainContentHolder=document.getElementById("main_content");mainContentHolder.setAttribute("style","padding: 0;"),hostingerLogo[0].remove();var h1Tag=notification.getElementsByTagName("H1")[0];h1Tag.className="000-h1",h1Tag.innerHTML="Black Friday Prices",h1Tag.setAttribute("style",'color: white; font-family: "Roboto", sans-serif; font-size: 22px; font-weight: 700; text-transform: uppercase;');var h2Tag=document.createElement("H2");h2Tag.innerHTML="Get 90% Off!",h2Tag.setAttribute("style",'color: white; margin: 10px 0 15px 0; font-family: "Roboto", sans-serif; font-size: 60px; font-weight: 700; line-height: 1;'),h1Tag.parentNode.insertBefore(h2Tag,h1Tag.nextSibling);var paragraph=notification.getElementsByTagName("p")[0];paragraph.innerHTML="Get Web Hosting for $0.99/month + SSL Certificate for FREE!",paragraph.setAttribute("style",'font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 15px;');var list=notification.getElementsByTagName("UL")[0];list.remove();var org_html=mainContent.innerHTML,new_html='<div class="content-wrapper">'+mainContent.innerHTML+'</div><div class="web-hosting-90-off-image-wrapper"><img class="web-hosting-90-off-image" src="https://cdn.000webhost.com/000webhost/promotions/bf-2020-wp-inject-img.png"></div>';mainContent.innerHTML=new_html;var saleImage=mainContent.getElementsByClassName("web-hosting-90-off-image")[0]}</script></body>
+    </html>
